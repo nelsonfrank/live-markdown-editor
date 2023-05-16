@@ -18,7 +18,7 @@ const BlogEditor = () => {
 	};
 
 	return (
-		<section className={darkMode ? "dark" : ""}>
+		<section className={`${darkMode ? "dark" : ""} min-h-screen`}>
 			<nav className='grid grid-cols-2 place-content-between items-center w-full px-8'>
 				<h4>home</h4>
 				<button

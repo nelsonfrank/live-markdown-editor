@@ -4,6 +4,7 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
+import remarkImages from "remark-images";
 
 export interface MarkdownPreviewProps {
 	textInput: string;
@@ -15,6 +16,7 @@ const MarkdownPreview = ({ textInput }: MarkdownPreviewProps) => {
 			await unified()
 				.use(remarkParse)
 				.use(remarkRehype)
+				.use(remarkImages)
 				.use(rehypeSanitize)
 				.use(rehypeStringify)
 				.process(textInput),
