@@ -1,7 +1,11 @@
-function App() {
+import { Tooltip } from "react-tooltip";
+import BlogEditor from "./components/BlogEditor";
+
+function App(): JSX.Element {
 	return (
 		<>
-			<h1 className='text-3xl font-bold underline'>Hello world!</h1>
+			<BlogEditor />
+			<Tooltip id='my-tooltip' />
 		</>
 	);
 }
