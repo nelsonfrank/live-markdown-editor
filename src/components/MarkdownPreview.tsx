@@ -5,9 +5,11 @@ import remarkRehype from "remark-rehype";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 import remarkImages from "remark-images";
-import { useSelector } from "react-redux";
+import rehypeHighlight from "rehype-highlight";
+import bnf from "highlight.js/lib/languages/bnf";
 
 // store
+import { useSelector } from "react-redux";
 import { RootState } from "src/store";
 
 const MarkdownPreview = () => {
@@ -23,6 +25,7 @@ const MarkdownPreview = () => {
 				.use(remarkParse)
 				.use(remarkRehype)
 				.use(remarkImages)
+				.use(rehypeHighlight, { languages: { bnf } })
 				.use(rehypeSanitize)
 				.use(rehypeStringify)
 				.process(editorInput),
@@ -31,13 +34,13 @@ const MarkdownPreview = () => {
 
 	useEffect(() => {
 		file().then((res) => {
-			setMarkdown(res.value);
+			setMarkdown(res.value as string);
 		});
 	}, [file]);
 
 	return (
-		<div className='border-2 border-solid p-4 min-w-1/2 min-h-700px'>
-			Preview
+		<div className='border-2 border-solid p-4 min-w-11/12 min-h-300px mx-auto md:min-w-1/2 md:min-h-700px'>
+			<p>Preview</p>
 			<div dangerouslySetInnerHTML={{ __html: markdown }} />
 		</div>
 	);

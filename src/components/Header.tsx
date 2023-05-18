@@ -1,6 +1,7 @@
 // dependencies
 import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineDarkMode, MdOutlineWbSunny } from "react-icons/md";
+import { FaSignature } from "react-icons/fa";
 
 // store
 import { RootState } from "src/store";
@@ -17,7 +18,9 @@ const Header = () => {
 
 	return (
 		<nav className='grid grid-cols-2 place-content-between items-center w-full px-8'>
-			<h4>Markdown Editor</h4>
+			<h4>
+				<FaSignature className='text-6xl' />
+			</h4>
 			<button
 				onClick={handleToggleTheme}
 				className='self-left justify-self-end'
