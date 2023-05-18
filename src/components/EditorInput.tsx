@@ -3,13 +3,18 @@ import { useSelector, useDispatch } from "react-redux";
 
 // store
 import { inputChange } from "src/store/features/editor";
-import { AppDispatch } from "src/store";
+import { AppDispatch, RootState } from "src/store";
 
 // Components
 import ToolBar from "./ToolBar";
 
 const EditorInput = () => {
-	const [textInput, setTextInput] = useState("");
+	const editorInput = useSelector(
+		(state: RootState) => state.editor.inputValue
+	);
+
+	const [textInput, setTextInput] = useState(editorInput);
+	
 	const dispatch = useDispatch<AppDispatch>();
 
 	const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
