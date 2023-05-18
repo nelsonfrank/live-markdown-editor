@@ -1,17 +1,23 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
+// store
+import { inputChange } from "src/store/features/editor";
+import { AppDispatch } from "src/store";
+
+// Components
 import ToolBar from "./ToolBar";
 
-export interface EditorInputPropType {
-	onInputChange: (value: string) => string;
-}
-const EditorInput = ({ onInputChange }: EditorInputPropType) => {
+const EditorInput = () => {
 	const [textInput, setTextInput] = useState("");
+	const dispatch = useDispatch<AppDispatch>();
 
 	const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
 		const inputValue = event.target.value;
+
 		setTextInput(inputValue);
 
-		onInputChange(inputValue);
+		dispatch(inputChange(inputValue));
 	};
 
 	return (

@@ -5,12 +5,18 @@ import remarkRehype from "remark-rehype";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 import remarkImages from "remark-images";
+import { useSelector } from "react-redux";
 
-export interface MarkdownPreviewProps {
-	textInput: string;
-}
-const MarkdownPreview = ({ textInput }: MarkdownPreviewProps) => {
+// store
+import { RootState } from "src/store";
+
+const MarkdownPreview = () => {
 	const [markdown, setMarkdown] = useState<string>("");
+
+	const editorInput = useSelector(
+		(state: RootState) => state.editor.inputValue
+	);
+
 	const file = useCallback(
 		async () =>
 			await unified()
@@ -19,8 +25,8 @@ const MarkdownPreview = ({ textInput }: MarkdownPreviewProps) => {
 				.use(remarkImages)
 				.use(rehypeSanitize)
 				.use(rehypeStringify)
-				.process(textInput),
-		[textInput]
+				.process(editorInput),
+		[editorInput]
 	);
 
 	useEffect(() => {
