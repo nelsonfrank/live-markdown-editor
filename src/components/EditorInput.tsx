@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // store
@@ -30,6 +30,15 @@ const EditorInput = () => {
 		setTextInput(formattedInput);
 		dispatch(inputChange(formattedInput));
 	};
+
+	const updateTextInput = useCallback(() => {
+		setTextInput(editorInput);
+	}, [editorInput]);
+
+	useEffect(() => {
+		updateTextInput();
+	}, [updateTextInput]);
+
 	return (
 		<>
 			<div className='border-2 border-solid p-4 min-w-11/12 min-h-300px mx-auto md:min-w-1/2 md:min-h-700px'>

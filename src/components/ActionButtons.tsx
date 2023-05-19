@@ -4,7 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 // State
 import { AppDispatch, RootState } from "src/store";
-import { publishPostAsync, saveToDraftAsync } from "src/store/features/editor";
+import {
+	inputChange,
+	publishPostAsync,
+	saveToDraftAsync,
+} from "src/store/features/editor";
 
 const ActionButtons = () => {
 	const editorState = useSelector((state: RootState) => state.editor);
@@ -13,10 +17,12 @@ const ActionButtons = () => {
 
 	const handleSaveToDraft = () => {
 		dispatch(saveToDraftAsync());
+		dispatch(inputChange(""));
 	};
 
 	const handlePublish = () => {
 		dispatch(publishPostAsync());
+		dispatch(inputChange(""));
 	};
 
 	return (

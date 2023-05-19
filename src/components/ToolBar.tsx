@@ -48,21 +48,45 @@ const ToolBar = ({ onInputFormating, editorInput }: ToolBarPropType) => {
 		if (btnType === "ordered-list") {
 			return onInputFormating(`${editorInput} \r\n 1. `);
 		}
+		if (btnType === "heading1") {
+			return onInputFormating(`${editorInput} \r\n # `);
+		}
+		if (btnType === "heading2") {
+			return onInputFormating(`${editorInput} \r\n ## `);
+		}
+		if (btnType === "heading3") {
+			return onInputFormating(`${editorInput} \r\n ### `);
+		}
+		if (btnType === "heading4") {
+			return onInputFormating(`${editorInput} \r\n #### `);
+		}
 	};
 	return (
 		<div className='flex items-center gap-3 mb-4 ml-2'>
 			<button onClick={() => handleToolBtn("bold")}>
-				<p data-tooltip-id='my-tooltip' data-tooltip-content='Bold'>
+				<p
+					className='inline-block mb-0'
+					data-tooltip-id='my-tooltip'
+					data-tooltip-content='Bold'
+				>
 					<FaBold />
 				</p>
 			</button>
 			<button onClick={() => handleToolBtn("italic")}>
-				<p data-tooltip-id='my-tooltip' data-tooltip-content='Italic'>
+				<p
+					className='inline-block mb-0'
+					data-tooltip-id='my-tooltip'
+					data-tooltip-content='Italic'
+				>
 					<FaItalic />
 				</p>
 			</button>
 			<button onClick={() => handleToolBtn("strike-through")}>
-				<p data-tooltip-id='my-tooltip' data-tooltip-content='StrikeThrough'>
+				<p
+					className='inline-block mb-0'
+					data-tooltip-id='my-tooltip'
+					data-tooltip-content='StrikeThrough'
+				>
 					<FaStrikethrough />
 				</p>
 			</button>
@@ -70,12 +94,20 @@ const ToolBar = ({ onInputFormating, editorInput }: ToolBarPropType) => {
 			<VerticalDivider />
 
 			<button onClick={() => handleToolBtn("link")}>
-				<p data-tooltip-id='my-tooltip' data-tooltip-content='Italic'>
+				<p
+					className='inline-block mb-0'
+					data-tooltip-id='my-tooltip'
+					data-tooltip-content='Italic'
+				>
 					<FaLink />
 				</p>
 			</button>
 			<button onClick={() => handleToolBtn("image")}>
-				<p data-tooltip-id='my-tooltip' data-tooltip-content='StrikeThrough'>
+				<p
+					className='inline-block mb-0'
+					data-tooltip-id='my-tooltip'
+					data-tooltip-content='StrikeThrough'
+				>
 					<FaImage />
 				</p>
 			</button>
@@ -83,13 +115,58 @@ const ToolBar = ({ onInputFormating, editorInput }: ToolBarPropType) => {
 			<VerticalDivider />
 
 			<button onClick={() => handleToolBtn("unordered-list")}>
-				<p data-tooltip-id='my-tooltip' data-tooltip-content='Italic'>
+				<p
+					className='inline-block mb-0'
+					data-tooltip-id='my-tooltip'
+					data-tooltip-content='Italic'
+				>
 					<FaListUl />
 				</p>
 			</button>
 			<button onClick={() => handleToolBtn("ordered-list")}>
-				<p data-tooltip-id='my-tooltip' data-tooltip-content='StrikeThrough'>
+				<p
+					className='inline-block mb-0'
+					data-tooltip-id='my-tooltip'
+					data-tooltip-content='StrikeThrough'
+				>
 					<FaListOl />
+				</p>
+			</button>
+			<VerticalDivider />
+			<button onClick={() => handleToolBtn("heading1")}>
+				<p
+					className='inline-block mb-0'
+					data-tooltip-id='my-tooltip'
+					data-tooltip-content='StrikeThrough'
+				>
+					H<span className='text-sm'>1</span>
+				</p>
+			</button>
+			<button onClick={() => handleToolBtn("heading2")}>
+				<p
+					className='inline-block mb-0'
+					data-tooltip-id='my-tooltip'
+					data-tooltip-content='StrikeThrough'
+				>
+					H<span className='text-sm'>2</span>
+				</p>
+			</button>
+			<button onClick={() => handleToolBtn("heading3")}>
+				<p
+					className='inline-block mb-0'
+					data-tooltip-id='my-tooltip'
+					data-tooltip-content='StrikeThrough'
+				>
+					H<span className='text-sm'>3</span>
+				</p>
+			</button>
+			<button onClick={() => handleToolBtn("heading4")}>
+				<p
+					className='inline-block mb-0'
+					data-tooltip-id='my-tooltip'
+					data-tooltip-content='StrikeThrough'
+				>
+					H<span className='text-sm'>4</span>
 				</p>
 			</button>
 		</div>
