@@ -1,10 +1,10 @@
 import { Tooltip } from "react-tooltip";
-import BlogEditor from "./components/BlogEditor";
+import Home from "./pages/Home";
 
 function App(): JSX.Element {
 	return (
 		<>
-			<BlogEditor />
+			<Home />
 			<Tooltip id='my-tooltip' />
 		</>
 	);
