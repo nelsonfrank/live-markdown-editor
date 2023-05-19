@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 // store
@@ -14,8 +14,10 @@ const EditorInput = () => {
 	);
 
 	const [textInput, setTextInput] = useState(editorInput);
-	
+
 	const dispatch = useDispatch<AppDispatch>();
+
+	const inputRef = useRef(null);
 
 	const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
 		const inputValue = event.target.value;
@@ -24,13 +26,21 @@ const EditorInput = () => {
 		dispatch(inputChange(inputValue));
 	};
 
+	const handleInputFormating = (formattedInput: string) => {
+		setTextInput(formattedInput);
+		dispatch(inputChange(formattedInput));
+	};
 	return (
 		<>
 			<div className='border-2 border-solid p-4 min-w-11/12 min-h-300px mx-auto md:min-w-1/2 md:min-h-700px'>
-				<ToolBar />
+				<ToolBar
+					onInputFormating={handleInputFormating}
+					editorInput={textInput}
+				/>
 				<textarea
 					className='w-full h-270px md:h-620px border-2 focus:border-2 focus:border-gray-500 outline-none'
 					value={textInput}
+					ref={inputRef}
 					onChange={(e) => handleInputChange(e)}
 				/>
 			</div>

@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 import EditorInput from "./EditorInput";
 import MarkdownPreview from "./MarkdownPreview";
 import Header from "./Header";
+import ActionButtons from "./ActionButtons";
 
 // store
 import { RootState } from "src/store";
@@ -19,6 +20,7 @@ const BlogEditor = () => {
 				<h1 className='text-5xl'>Markdown Editor</h1>
 			</div>
 			<div className='max-w-7xl mx-auto'>
+				<ActionButtons />
 				<div className='flex flex-col md:flex-row items-center w-full gap-4 mx-2'>
 					<EditorInput />
 					<MarkdownPreview />

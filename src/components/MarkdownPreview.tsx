@@ -5,6 +5,7 @@ import remarkRehype from "remark-rehype";
 import rehypeSanitize from "rehype-sanitize";
 import rehypeStringify from "rehype-stringify";
 import remarkImages from "remark-images";
+import remarkGfm from "remark-gfm";
 import rehypeHighlight from "rehype-highlight";
 import bnf from "highlight.js/lib/languages/bnf";
 
@@ -26,6 +27,7 @@ const MarkdownPreview = () => {
 				.use(remarkRehype)
 				.use(remarkImages)
 				.use(rehypeHighlight, { languages: { bnf } })
+				.use(remarkGfm)
 				.use(rehypeSanitize)
 				.use(rehypeStringify)
 				.process(editorInput),

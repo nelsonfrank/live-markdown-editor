@@ -67,6 +67,20 @@
         font-family:  monospace;
         font-size: inherit;
     }
+
+    a{
+        text-decoration: underline;
+        color: blue
+    }
+
+    ul{
+        list-style-type: circle;
+    }
+
+    ol{
+        list-style-type: decimal;
+    }
+
 }
 
 

@@ -8,58 +8,89 @@ import {
 	FaStrikethrough,
 } from "react-icons/fa";
 
-const ToolBar = () => {
+export interface ToolBarPropType {
+	onInputFormating: (value: string) => void;
+	editorInput: string;
+}
+const ToolBar = ({ onInputFormating, editorInput }: ToolBarPropType) => {
 	const handleToolBtn = (btnType: string) => {
 		if (btnType === "bold") {
-			return "# ";
+			const formattedInput = `**${editorInput}**`;
+			return onInputFormating(formattedInput);
 		}
 
 		if (btnType === "italic") {
-			return "";
+			const isInputBold = editorInput.split("**").length > 1;
+
+			console.log(isInputBold);
+			if (isInputBold)
+				return onInputFormating(`*${editorInput.split("**")[0]}*`);
+			return onInputFormating(`*${editorInput}*`);
+		}
+
+		if (btnType === "strike-through") {
+			return onInputFormating(`~~${editorInput}~~`);
+		}
+
+		if (btnType === "link") {
+			return onInputFormating(`${editorInput} \r\n [](URL Here)`);
+		}
+
+		if (btnType === "image") {
+			return onInputFormating(
+				`${editorInput} \r\n ![image](https://example.com/your-image.png)`
+			);
+		}
+
+		if (btnType === "unordered-list") {
+			return onInputFormating(`${editorInput} \r\n - `);
+		}
+		if (btnType === "ordered-list") {
+			return onInputFormating(`${editorInput} \r\n 1. `);
 		}
 	};
 	return (
 		<div className='flex items-center gap-3 mb-4 ml-2'>
 			<button onClick={() => handleToolBtn("bold")}>
-				<a data-tooltip-id='my-tooltip' data-tooltip-content='Bold'>
+				<p data-tooltip-id='my-tooltip' data-tooltip-content='Bold'>
 					<FaBold />
-				</a>
+				</p>
 			</button>
 			<button onClick={() => handleToolBtn("italic")}>
-				<a data-tooltip-id='my-tooltip' data-tooltip-content='Italic'>
+				<p data-tooltip-id='my-tooltip' data-tooltip-content='Italic'>
 					<FaItalic />
-				</a>
+				</p>
 			</button>
 			<button onClick={() => handleToolBtn("strike-through")}>
-				<a data-tooltip-id='my-tooltip' data-tooltip-content='StrikeThrough'>
+				<p data-tooltip-id='my-tooltip' data-tooltip-content='StrikeThrough'>
 					<FaStrikethrough />
-				</a>
+				</p>
 			</button>
 
 			<VerticalDivider />
 
 			<button onClick={() => handleToolBtn("link")}>
-				<a data-tooltip-id='my-tooltip' data-tooltip-content='Italic'>
+				<p data-tooltip-id='my-tooltip' data-tooltip-content='Italic'>
 					<FaLink />
-				</a>
+				</p>
 			</button>
 			<button onClick={() => handleToolBtn("image")}>
-				<a data-tooltip-id='my-tooltip' data-tooltip-content='StrikeThrough'>
+				<p data-tooltip-id='my-tooltip' data-tooltip-content='StrikeThrough'>
 					<FaImage />
-				</a>
+				</p>
 			</button>
 
 			<VerticalDivider />
 
 			<button onClick={() => handleToolBtn("unordered-list")}>
-				<a data-tooltip-id='my-tooltip' data-tooltip-content='Italic'>
+				<p data-tooltip-id='my-tooltip' data-tooltip-content='Italic'>
 					<FaListUl />
-				</a>
+				</p>
 			</button>
 			<button onClick={() => handleToolBtn("ordered-list")}>
-				<a data-tooltip-id='my-tooltip' data-tooltip-content='StrikeThrough'>
+				<p data-tooltip-id='my-tooltip' data-tooltip-content='StrikeThrough'>
 					<FaListOl />
-				</a>
+				</p>
 			</button>
 		</div>
 	);
