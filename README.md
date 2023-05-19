@@ -1,11 +1,5 @@
 # ReactJS Blog Editor Component
 
-## Usage
-
-The video below shows how the blog app work.
-<video src="./static/videos/demo.mp4" controls="controls" style="max-width: 730px;">
-</video>
-
 ## Getting Started
 
  Here's how to get started:
