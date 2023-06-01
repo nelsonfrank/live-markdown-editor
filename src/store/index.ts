@@ -3,20 +3,18 @@ import storage from "redux-persist/lib/storage";
 import {persistReducer} from "redux-persist";
 
 // Reducers
-import editorReducer from './features/editor/editorSlice'
-import themeSlice from './features/theme/themeSlice'
-
-
+import editorSlice from "./features/editor/editorSlice";
+import themeSlice from "./features/theme/themeSlice";
 
 export const persistConfig = {
-    key: 'root',
-    storage: storage,
+	key: "root",
+	storage: storage,
 };
 
 export const rootReducers = combineReducers({
-        editor: editorReducer,
-        theme: themeSlice
-  })
+	editor: editorSlice,
+	theme: themeSlice,
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducers)
   
